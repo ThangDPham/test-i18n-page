@@ -34,7 +34,7 @@ function changeLanguage(language) {
 }`;
 
 function fetchTranslations() {
-  const translationsPath = path.resolve(__dirname, "translations_1.json");
+  const translationsPath = path.resolve(__dirname, "translations.json");
   const translationsJson = fs.readFileSync(translationsPath, "utf8");
   translations = JSON.parse(translationsJson);
 }
