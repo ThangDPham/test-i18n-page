@@ -46,13 +46,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         function executeInlineScripts(doc) {
             const scripts = doc.querySelectorAll('script');
             scripts.forEach(oldScript => {
-                const newScript = document.createElement('script');
-                // Copy attributes
-                Array.from(oldScript.attributes).forEach(attr => {
-                    newScript.setAttribute(attr.name, attr.value);
-                });
-                newScript.textContent = oldScript.textContent;
-                document.body.appendChild(newScript);
+                if (oldScript.src) {
+                    const scriptElement = document.querySelector(`script[src="${oldScript.src}"]`);
+                    if (scriptElement) {
+                        scriptElement.remove();
+                    }
+                    const newScript = document.createElement('script');
+                    // Copy attributes
+                    Array.from(oldScript.attributes).forEach(attr => {
+                        newScript.setAttribute(attr.name, attr.value);
+                    });
+                    newScript.textContent = oldScript.textContent;
+                    document.body.appendChild(newScript);
+                } else {
+                    window.eval(oldScript.textContent);
+                }
             });
         }
 
