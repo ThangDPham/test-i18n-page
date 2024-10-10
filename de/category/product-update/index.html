@@ -8,6 +8,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="sua6JhWYRvdHIKhUmpgk9EYDWwVsazMGrdUBlv5LTc8" name="google-site-verification">
 <script>
     (function() {
+        const docsLanguage = [
+            { value: "en", text: "English" },
+            { value: "fr", text: "Français" },
+            { value: "ja", text: "日本語" },
+            { value: "ko", text: "한국어" },
+            { value: "es", text: "Español" },
+            { value: "de", text: "Deutsch" },
+            { value: "zh-cn", text: "简体中文" },
+            { value: "zh-hk", text: "繁體中文" },
+            { value: "pt", text: "Português" },
+            { value: "ar", text: "العربية" },
+        ];
+    
         function loadPage(page) {
             page = page || new URLSearchParams(window.location.search).get('page') || '1';
             fetch(`page${page}.html`)
@@ -120,21 +133,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   const docsLanguage = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
 
   document.addEventListener("DOMContentLoaded", function() {
-  console.log("docs language script executing...");
-  const links = document.querySelectorAll("a[href]");
-  console.log(links);
-  links.forEach(link => {
-    const href = link.getAttribute("href");
-    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
-      const url = new URL(href);
-      const language = getLanguageFromURL();
-      const newPath = `/${language}${url.pathname}`;
-      console.log(newPath);
-      url.pathname = newPath;
-      link.setAttribute("href", url.href);
-    }
+  
+    const links = document.querySelectorAll("a[href]");
+    
+    links.forEach(link => {
+      const href = link.getAttribute("href");
+      if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
+        const url = new URL(href);
+        const language = getLanguageFromURL();
+        const newPath = `/${language}${url.pathname}`;
+        url.pathname = newPath;
+        link.setAttribute("href", url.href);
+      }
+    });
   });
-});
 
 function getLanguageFromURL() {
   const pathParts = window.location.pathname.split('/').filter(Boolean);
@@ -171,4 +183,32 @@ function changeLanguage(language) {
 
   window.location.href = url.href;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    function removeWebflowBadge() {
+      var badge = document.querySelector('a.w-webflow-badge');
+      if (badge) {
+        badge.style.display = 'none !important;';
+        observer.disconnect();
+      }
+    }
+
+    removeWebflowBadge();
+
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach(function(node) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.matches('a.w-webflow-badge') || node.querySelector('a.w-webflow-badge')) {
+                removeWebflowBadge();
+              }
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
 </script></body></html>
