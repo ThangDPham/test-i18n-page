@@ -21,22 +21,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-  </style><style>
-    .language-selector {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 1000;
+  </style><script>
+  const docsLanguage = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
+
+  document.addEventListener("DOMContentLoaded", function() {
+  console.log("docs language script executing...");
+  const links = document.querySelectorAll("a[href]");
+  console.log(links);
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
+      const url = new URL(href);
+      const language = getLanguageFromURL();
+      const newPath = `/${language}${url.pathname}`;
+      console.log(newPath);
+      url.pathname = newPath;
+      link.setAttribute("href", url.href);
     }
-    .language-selector select {
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-  </style><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/blog/program-in-english/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/blog/program-in-english/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/blog/program-in-english/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/blog/program-in-english/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/blog/program-in-english/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/blog/program-in-english/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/blog/program-in-english/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/blog/program-in-english/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/blog/program-in-english/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/blog/program-in-english/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/en/blog/program-in-english/index.html"></head><body style="direction: ltr;"><div class="blog-post-header" style="background-image:url(&quot;https://thangdp.regionaldelicacyshop.software/assets/a0b9ab9fd5.png&quot;)"><div class="blog-post-header-overlay"><div class="sdai-navbar w-nav" data-animation="default" data-collapse="medium" data-doc-height="1" data-duration="400" data-easing="ease" data-easing2="ease" data-no-scroll="1" role="banner"><div class="container-2 w-container"><a class="logo-block w-nav-brand" href="/en"><img alt="" class="sdai-logo" src="https://thangdp.regionaldelicacyshop.software/assets/1b38df696e.png"></a><nav class="nav-menu w-nav-menu" role="navigation"><a class="nav-link light w-nav-link" href="/en">Home</a><div class="dropdown w-dropdown" data-delay="0" data-hover="false"><div class="nav-link dropdown-toggle light w-dropdown-toggle"><div class="dropdown-icon w-icon-dropdown-toggle"></div><div class="text-block-15">About</div></div><nav class="dropdown-list w-dropdown-list"><a class="dropdown-link w-dropdown-link" href="/en/about/about-skydeckai">About</a><a class="dropdown-link w-dropdown-link" href="/en/about/security">Security</a></nav></div><a class="nav-link light w-nav-link" href="/en/about/skydeck-contact-us">Contact</a><a class="nav-link light w-nav-link" href="/en/about/blog">Blog</a><a class="nav-link light w-nav-link" href="https://docs.skydeck.ai/" target="_blank">Docs</a><div class="div-block-6"><a class="sdai-cta-button sdai-cta-button-on-blue w-button" href="http://admin.skydeck.ai/sign-in" target="_blank">Admin Sign In</a><a class="sdai-cta-button sdai-cta-button-on-blue w-button" href="https://user.skydeck.ai/sign-in" target="_blank">User Sign In</a></div></nav><div class="transparant-menu-button w-nav-button"><div class="w-icon-nav-menu"></div></div></div></div><div class="about-text w-container"><div class="blog-single-post-date" data-ix="fade-in-on-load-2">May 13, 2024</div><h2 class="subpage-title blog-post-title" data-ix="fade-in-on-load">Program in English</h2></div></div></div><div class="feature-slider blog-page-section"><div class="about-text w-container"><div class="blog-post-page-content"><div class="rich-text-block w-richtext"><p><strong>Did you know that you can write LLM prompts as if they were programs? You can pretty much use any language you like, or make one up (pseudo-code) as long as it makes sense. The pattern-matching capabilities on a language model will determine what you are trying to direct, and it will execute (a variation) on what you have asked it to do. It will not be quite the same each time (and that might be a feature). You can try it out here in SkyDeck.ai (sign up) and experiment with using different LLMs to see how the results differ. Applying this technique in your own use of AI can add another multiple to your productivity.</strong></p><h2>Programmatic Poetry</h2><p>For example, you could ask an LLM:</p><div class="w-embed">Write a short poem: haiku about love in English.</div><p>Or you could programmatically direct it to write three types of poems in three languages about three subjects. It will give you most of the combinations. Here is how you do it.<br><br>First, I define the poem types to produce. I imagine a variable name for this called "poem_type" and I present the types in a Json format:</p><div class="w-embed">{ "poem_type": [{ "name": "haiku" }, { "name": "lymeric" }, { "name": "sonnet" }] }</div><p>I do something similar for poem subjects and languages:</p><div class="w-embed">{ "subject_type": [{ "name": "love" }, { "name": "anger" }, { "name": "music" }] }
+  });
+});
+
+function getLanguageFromURL() {
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const supportedLanguageCodes = docsLanguage.map(lang => lang.value);
+  
+  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
+    return pathParts[0];
+  }
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("lang") || "en";
+}
+  </script><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/blog/program-in-english/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/blog/program-in-english/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/blog/program-in-english/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/blog/program-in-english/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/blog/program-in-english/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/blog/program-in-english/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/blog/program-in-english/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/blog/program-in-english/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/blog/program-in-english/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/blog/program-in-english/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/en/blog/program-in-english/index.html"></head><body style="direction: ltr;"><div class="blog-post-header" style="background-image:url(&quot;https://thangdp.regionaldelicacyshop.software/assets/a0b9ab9fd5.png&quot;)"><div class="blog-post-header-overlay"><div class="sdai-navbar w-nav" data-animation="default" data-collapse="medium" data-doc-height="1" data-duration="400" data-easing="ease" data-easing2="ease" data-no-scroll="1" role="banner"><div class="container-2 w-container"><a class="logo-block w-nav-brand" href="/en"><img alt="" class="sdai-logo" src="https://thangdp.regionaldelicacyshop.software/assets/1b38df696e.png"></a><nav class="nav-menu w-nav-menu" role="navigation"><a class="nav-link light w-nav-link" href="/en">Home</a><div class="dropdown w-dropdown" data-delay="0" data-hover="false"><div class="nav-link dropdown-toggle light w-dropdown-toggle"><div class="dropdown-icon w-icon-dropdown-toggle"></div><div class="text-block-15">About</div></div><nav class="dropdown-list w-dropdown-list"><a class="dropdown-link w-dropdown-link" href="/en/about/about-skydeckai">About</a><a class="dropdown-link w-dropdown-link" href="/en/about/security">Security</a></nav></div><a class="nav-link light w-nav-link" href="/en/about/skydeck-contact-us">Contact</a><a class="nav-link light w-nav-link" href="/en/about/blog">Blog</a><a class="nav-link light w-nav-link" href="https://docs.skydeck.ai/" target="_blank">Docs</a><div class="div-block-6"><a class="sdai-cta-button sdai-cta-button-on-blue w-button" href="http://admin.skydeck.ai/sign-in" target="_blank">Admin Sign In</a><a class="sdai-cta-button sdai-cta-button-on-blue w-button" href="https://user.skydeck.ai/sign-in" target="_blank">User Sign In</a></div></nav><div class="transparant-menu-button w-nav-button"><div class="w-icon-nav-menu"></div></div></div></div><div class="about-text w-container"><div class="blog-single-post-date" data-ix="fade-in-on-load-2">May 13, 2024</div><h2 class="subpage-title blog-post-title" data-ix="fade-in-on-load">Program in English</h2></div></div></div><div class="feature-slider blog-page-section"><div class="about-text w-container"><div class="blog-post-page-content"><div class="rich-text-block w-richtext"><p><strong>Did you know that you can write LLM prompts as if they were programs? You can pretty much use any language you like, or make one up (pseudo-code) as long as it makes sense. The pattern-matching capabilities on a language model will determine what you are trying to direct, and it will execute (a variation) on what you have asked it to do. It will not be quite the same each time (and that might be a feature). You can try it out here in SkyDeck.ai (sign up) and experiment with using different LLMs to see how the results differ. Applying this technique in your own use of AI can add another multiple to your productivity.</strong></p><h2>Programmatic Poetry</h2><p>For example, you could ask an LLM:</p><div class="w-embed">Write a short poem: haiku about love in English.</div><p>Or you could programmatically direct it to write three types of poems in three languages about three subjects. It will give you most of the combinations. Here is how you do it.<br><br>First, I define the poem types to produce. I imagine a variable name for this called "poem_type" and I present the types in a Json format:</p><div class="w-embed">{ "poem_type": [{ "name": "haiku" }, { "name": "lymeric" }, { "name": "sonnet" }] }</div><p>I do something similar for poem subjects and languages:</p><div class="w-embed">{ "subject_type": [{ "name": "love" }, { "name": "anger" }, { "name": "music" }] }
 
 { "language": [{ "name": "Japanese" }, { "name": "English" }, { "name": "Italian" }] }</div><p>Then you describe the logic for what to do with this data, referring to it in a logical fashion. I copied the style of mustache logic-less templates to create three levels of nested loops. If this were a program we would expect 3 x 3 x 3 = 9 different poems to be produced. But an LLM will do as many as it likes, and your output might get cut off due to context window limitations.</p><div class="w-embed">Write a short poem:
 {{#poem_type}}
@@ -72,30 +88,4 @@ function changeLanguage(language) {
 
   window.location.href = url.href;
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll("a[href]");
-  links.forEach(link => {
-    const href = link.getAttribute("href");
-    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
-      const url = new URL(href);
-      const language = getLanguageFromURL();
-      const newPath = `/${language}${url.pathname}`;
-      url.pathname = newPath;
-      link.setAttribute("href", url.href);
-    }
-  });
-});
-
-function getLanguageFromURL() {
-  const pathParts = window.location.pathname.split('/').filter(Boolean);
-  const supportedLanguageCodes = supportedLanguages.map(lang => lang.value);
-  
-  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
-    return pathParts[0];
-  }
-  
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("lang") || "en";
-}
-</script><div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en" selected="true">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar">العربية</option></select></div></body></html>
+</script></body></html>

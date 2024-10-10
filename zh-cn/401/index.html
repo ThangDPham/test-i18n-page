@@ -21,29 +21,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-  </style><style>
-    .language-selector {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 1000;
+  </style><script>
+  const docsLanguage = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
+
+  document.addEventListener("DOMContentLoaded", function() {
+  console.log("docs language script executing...");
+  const links = document.querySelectorAll("a[href]");
+  console.log(links);
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
+      const url = new URL(href);
+      const language = getLanguageFromURL();
+      const newPath = `/${language}${url.pathname}`;
+      console.log(newPath);
+      url.pathname = newPath;
+      link.setAttribute("href", url.href);
     }
-    .language-selector select {
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-  </style><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/401/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/401/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/401/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/401/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/401/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/401/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/401/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/401/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/401/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/401/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/zh-cn/401/index.html"></head><body style="direction: ltr;"><div class="utility-page-wrap"><div class="utility-page-content w-password-page w-form"><form action="/.wf_auth" class="utility-page-form w-password-page" data-name="Email Form" data-wf-element-id="65d845c1333570ac751677f500000000000c" data-wf-page-id="663b4d698d0e8bf7683d0e9c" id="email-form" method="post" name="email-form"><img alt="" src="https://thangdp.regionaldelicacyshop.software/assets/0f30804bc1.svg"><h2>受保护页面</h2><label class="w-password-page" for="pass">密码</label><input autofocus="true" class="w-password-page w-input" data-name="field" id="pass" maxlength="256" name="pass" placeholder="Enter your password" type="password"><input class="w-password-page w-button" data-wait="Please wait..." type="submit" value="Submit"><div class="w-password-page w-form-fail"><div>密码不正确。请再试一次。</div></div><div class="w-password-page w-embed w-script" style="display:none"><input name="path" type="hidden" value="<%WF_FORM_VALUE_PATH%>"><input name="page" type="hidden" value="<%WF_FORM_VALUE_PAGE%>"></div><div class="w-password-page w-embed w-script" style="display:none"><script type="application/javascript">(function _handlePasswordPageOnload() {
+  });
+});
+
+function getLanguageFromURL() {
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const supportedLanguageCodes = docsLanguage.map(lang => lang.value);
+  
+  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
+    return pathParts[0];
+  }
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("lang") || "en";
+}
+  </script><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/401/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/401/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/401/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/401/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/401/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/401/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/401/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/401/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/401/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/401/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/zh-cn/401/index.html"></head><body style="direction: ltr;"><div class="utility-page-wrap"><div class="utility-page-content w-password-page w-form"><form action="/.wf_auth" class="utility-page-form w-password-page" data-name="Email Form" data-wf-element-id="65d845c1333570ac751677f500000000000c" data-wf-page-id="663b4d698d0e8bf7683d0e9c" id="email-form" method="post" name="email-form"><img alt="" src="https://thangdp.regionaldelicacyshop.software/assets/0f30804bc1.svg"><h2>受保护页面</h2><label class="w-password-page" for="pass">密码</label><input autofocus="true" class="w-password-page w-input" data-name="field" id="pass" maxlength="256" name="pass" placeholder="Enter your password" type="password"><input class="w-password-page w-button" data-wait="Please wait..." type="submit" value="Submit"><div class="w-password-page w-form-fail"><div>密码不正确。请再试一次。</div></div><div class="w-password-page w-embed w-script" style="display:none"><input name="path" type="hidden" value="<%WF_FORM_VALUE_PATH%>"><input name="page" type="hidden" value="<%WF_FORM_VALUE_PAGE%>"></div><div class="w-password-page w-embed w-script" style="display:none"><script type="application/javascript">(function _handlePasswordPageOnload() {
 	  if (/[?&]e=1(&|$)/.test(document.location.search)) {
 	    document.querySelector('.w-password-page.w-form-fail').style.display = 'block';
 	  }
 	})()</script></div></form></div></div><script src="https://thangdp.regionaldelicacyshop.software/assets/f3a7396718.js" type="text/javascript"></script><script src="https://thangdp.regionaldelicacyshop.software/assets/90b6bbbe1b.js" type="text/javascript"></script><!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-N72P33C2" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en" selected="true">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar">العربية</option></select></div><script id="i18n-script">
+<div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn" selected="true">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar">العربية</option></select></div><script id="i18n-script">
 const supportedLanguages = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
 
 function changeLanguage(language) {
@@ -67,30 +83,4 @@ function changeLanguage(language) {
 
   window.location.href = url.href;
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll("a[href]");
-  links.forEach(link => {
-    const href = link.getAttribute("href");
-    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
-      const url = new URL(href);
-      const language = getLanguageFromURL();
-      const newPath = `/${language}${url.pathname}`;
-      url.pathname = newPath;
-      link.setAttribute("href", url.href);
-    }
-  });
-});
-
-function getLanguageFromURL() {
-  const pathParts = window.location.pathname.split('/').filter(Boolean);
-  const supportedLanguageCodes = supportedLanguages.map(lang => lang.value);
-  
-  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
-    return pathParts[0];
-  }
-  
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("lang") || "en";
-}
-</script><div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn" selected="true">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar">العربية</option></select></div></body></html>
+</script></body></html>

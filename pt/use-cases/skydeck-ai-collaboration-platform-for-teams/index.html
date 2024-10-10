@@ -61,22 +61,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-  </style><style>
-    .language-selector {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 1000;
+  </style><script>
+  const docsLanguage = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
+
+  document.addEventListener("DOMContentLoaded", function() {
+  console.log("docs language script executing...");
+  const links = document.querySelectorAll("a[href]");
+  console.log(links);
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
+      const url = new URL(href);
+      const language = getLanguageFromURL();
+      const newPath = `/${language}${url.pathname}`;
+      console.log(newPath);
+      url.pathname = newPath;
+      link.setAttribute("href", url.href);
     }
-    .language-selector select {
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-  </style><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/pt/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"></head><body style="direction: ltr;"><div class="navbar-component w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-w-id="89a538a4-18ec-08f7-bfea-f28bc063fe64" role="banner"><div class="navbar-container"><a class="navbar-logo-links w-nav-brand" href="https://www.skydeck.ai/"><div class="uui-logo_component"><div class="uui-logo_logomark"><img alt="SkyDeck AI logomark" class="uui-styleguide_logomark-bg" height="" loading="eager" src="https://thangdp.regionaldelicacyshop.software/assets/0e9cc12c7c.png"></div><img alt="SkyDeck AI UI logotext" class="uui-logo_logotype" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/a0bd183324.svg"></div></a><nav class="navbar-menu w-nav-menu" role="navigation"><div class="bar-menu-left"><div class="bar-menu-dropdown w-dropdown" data-delay="300" data-hover="true" data-w-id="89a538a4-18ec-08f7-bfea-f28bc063fe6d"><div class="dropdown-toggle w-dropdown-toggle"><div class="uui-dropdown-icon w-embed"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+  });
+});
+
+function getLanguageFromURL() {
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const supportedLanguageCodes = docsLanguage.map(lang => lang.value);
+  
+  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
+    return pathParts[0];
+  }
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("lang") || "en";
+}
+  </script><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/pt/use-cases/skydeck-ai-collaboration-platform-for-teams/index.html"></head><body style="direction: ltr;"><div class="navbar-component w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-w-id="89a538a4-18ec-08f7-bfea-f28bc063fe64" role="banner"><div class="navbar-container"><a class="navbar-logo-links w-nav-brand" href="https://www.skydeck.ai/"><div class="uui-logo_component"><div class="uui-logo_logomark"><img alt="SkyDeck AI logomark" class="uui-styleguide_logomark-bg" height="" loading="eager" src="https://thangdp.regionaldelicacyshop.software/assets/0e9cc12c7c.png"></div><img alt="SkyDeck AI UI logotext" class="uui-logo_logotype" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/a0bd183324.svg"></div></a><nav class="navbar-menu w-nav-menu" role="navigation"><div class="bar-menu-left"><div class="bar-menu-dropdown w-dropdown" data-delay="300" data-hover="true" data-w-id="89a538a4-18ec-08f7-bfea-f28bc063fe6d"><div class="dropdown-toggle w-dropdown-toggle"><div class="uui-dropdown-icon w-embed"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
 <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.67"></path>
 </svg></div><div class="nav-text">Soluções</div></div><nav class="bar-dorpdown-list w-dropdown-list"><div class="bar-dopdown-link-list"><a aria-current="page" class="bar-dropdown-link w-inline-block w--current" href="/pt/use-cases/skydeck-ai-collaboration-platform-for-teams" id="w-node-_89a538a4-18ec-08f7-bfea-f28bc063fe74-c063fe64"><div class="uui-navbar07_icon-wrapper"><img alt="" class="nav-content-icon" height="Auto" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/c7edf68fa6.png" width="25"></div><div class="uui-navbar07_item-right"><div class="uui-navbar07_item-heading">SkyDeck&nbsp;&nbsp;AI</div><div class="uui-text-size-small">Plataforma de Produtividade AI Segura com Foco em Negócios para Equipes.</div></div></a><a class="bar-dropdown-link w-inline-block" href="https://rememberizer.ai/" target="_blank"><div class="uui-navbar07_icon-wrapper"><img alt="" class="nav-content-icon" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/e8db10689c.png"></div><div class="uui-navbar07_item-right"><div class="uui-navbar07_item-heading">Lembrete para Indivíduos</div><div class="uui-text-size-small">Onde os Dados do Usuário Impulsionam a Personalização de IA</div></div></a><a class="bar-dropdown-link w-inline-block" href="https://rememberizer.ai/" target="_blank"><div class="uui-navbar07_icon-wrapper"><img alt="" class="nav-content-icon" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/e8db10689c.png"></div><div class="uui-navbar07_item-right"><div class="uui-navbar07_item-heading">Lembrete para Equipes</div><div class="uui-text-size-small">Em breve...</div></div></a><a class="bar-dropdown-link w-inline-block" href="#" target="_blank"><div class="uui-navbar07_icon-wrapper"><div class="uui-icon-1x1-xsmall w-embed"><!--?xml version="1.0" encoding="UTF-8"?-->
 <svg height="25" id="icon" viewBox="0 0 32 32" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +291,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </svg></div></div><div class="uui-layout09_item-text-wrapper"><div class="uui-text-size-large-3"><strong>GitHub and&nbsp;JIRA Integration</strong></div><div>Integration with platforms like GitHub and JIRA through our Chrome Extension further facilitates version control and collaboration, making it easier to manage and track changes.</div></div></div></div><div class="uui-button-row-3 is-reverse-mobile-landscape"><div class="uui-button-wrapper-3 max-width-full-mobile-landscape-3"><a class="uui-button-secondary-gray-3 w-inline-block" href="#"><div>Saiba mais</div></a></div><div class="uui-button-wrapper-3 max-width-full-mobile-landscape-3"><a class="uui-button-6 w-inline-block" href="https://admin.skydeck.ai/en/sign-up/" target="_blank"><div>Start Developing</div></a></div></div></div><div class="uui-layout09_content" id="w-node-_3154f7c4-d460-d1d7-17a2-be83611717ba-3335cb99"><img alt="Dashboard mockup" class="uui-layout09_lightbox-image" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/adfd607e18.webp"></div></div></div></div></div></section><div class="footer"><div class="about-text footer-container w-container"><div class="footer-row block w-row"><div class="footer-column badge w-col w-col-9 w-col-small-small-stack w-col-tiny-tiny-stack"><div class="div-block-4"><a class="social-btn github w-button" href="https://github.com/skydeckai" target="_blank"></a><a class="social-btn x w-button" href="https://x.com/SkyDeckAI" target="_blank"></a><a class="social-btn linkedin w-button" href="https://www.linkedin.com/company/skydeck-ai" target="_blank"></a><a class="social-btn youtube w-button" href="https://www.youtube.com/@SkyDeckAI" target="_blank"></a></div><div class="div-block-3"><a class="footer-link" href="https://docs.skydeck.ai/notices/terms-of-use" target="_blank">Termos de Uso</a><a class="footer-link" href="https://docs.skydeck.ai/notices/privacy-policy" target="_blank">Política de Privacidade</a><a class="footer-link" href="https://docs.skydeck.ai/notices/cookie-notice" target="_blank">Aviso de Cookies</a></div><div class="footer-text">© 2024 SkyDeck AI Inc.</div></div><div class="footer-column w-col w-col-3 w-col-small-small-stack w-col-tiny-tiny-stack"><div class="link-block"><a class="w-inline-block" href="https://app.vanta.com/skydeckai/trust/hglgloe5scxyzulfgon9" target="_blank"><img alt="" class="image-10" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/d011dd7a9b.svg"></a><a class="w-inline-block" href="https://appdefensealliance.dev/casa/tier-2/tier2-overview" target="_blank"><img alt="" class="image-11" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/25aff628bf.png"></a></div></div></div></div></div><script src="https://thangdp.regionaldelicacyshop.software/assets/f3a7396718.js" type="text/javascript"></script><script src="https://thangdp.regionaldelicacyshop.software/assets/90b6bbbe1b.js" type="text/javascript"></script><!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-N72P33C2" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en" selected="true">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar">العربية</option></select></div><script id="i18n-script">
+<div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt" selected="true">Português</option><option value="ar">العربية</option></select></div><script id="i18n-script">
 const supportedLanguages = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
 
 function changeLanguage(language) {
@@ -299,30 +315,4 @@ function changeLanguage(language) {
 
   window.location.href = url.href;
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll("a[href]");
-  links.forEach(link => {
-    const href = link.getAttribute("href");
-    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
-      const url = new URL(href);
-      const language = getLanguageFromURL();
-      const newPath = `/${language}${url.pathname}`;
-      url.pathname = newPath;
-      link.setAttribute("href", url.href);
-    }
-  });
-});
-
-function getLanguageFromURL() {
-  const pathParts = window.location.pathname.split('/').filter(Boolean);
-  const supportedLanguageCodes = supportedLanguages.map(lang => lang.value);
-  
-  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
-    return pathParts[0];
-  }
-  
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("lang") || "en";
-}
-</script><div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt" selected="true">Português</option><option value="ar">العربية</option></select></div></body></html>
+</script></body></html>

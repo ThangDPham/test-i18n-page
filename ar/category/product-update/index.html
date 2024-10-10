@@ -24,6 +24,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                     // Re-execute scripts in the new content
                     executeInlineScripts(doc);
+                    
+                    replaceDocsLinks();
                 })
                 .catch(error => {
                     console.error('Error loading page:', error);
@@ -47,7 +49,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             const scripts = doc.querySelectorAll('script');
             scripts.forEach(oldScript => {
                 if (oldScript.src) {
-                    console.log('Re-executing script:', oldScript.src);
                     const scriptElement = document.querySelector(`script[src="${oldScript.src}"]`);
                     if (scriptElement) {
                         scriptElement.remove();
@@ -63,6 +64,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     window.eval(oldScript.textContent);
                 }
             });
+        }
+        
+        function replaceDocsLinks() {
+            const links = document.querySelectorAll("a[href]");
+            links.forEach(link => {
+                const href = link.getAttribute("href");
+                if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
+                    const url = new URL(href);
+                    const language = getLanguageFromURL();
+                    const newPath = `/${language}${url.pathname}`;
+                    url.pathname = newPath;
+                    link.setAttribute("href", url.href);
+                }
+            });
+        }
+
+        function getLanguageFromURL() {
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            const supportedLanguageCodes = docsLanguage.map(lang => lang.value);
+            
+            if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
+                return pathParts[0];
+            }
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get("lang") || "en";
         }
 
         window.addEventListener('popstate', function(event) {
@@ -89,22 +116,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background-color: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-  </style><style>
-    .language-selector {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 1000;
+  </style><script>
+  const docsLanguage = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
+
+  document.addEventListener("DOMContentLoaded", function() {
+  console.log("docs language script executing...");
+  const links = document.querySelectorAll("a[href]");
+  console.log(links);
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
+      const url = new URL(href);
+      const language = getLanguageFromURL();
+      const newPath = `/${language}${url.pathname}`;
+      console.log(newPath);
+      url.pathname = newPath;
+      link.setAttribute("href", url.href);
     }
-    .language-selector select {
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-  </style><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/category/product-update/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/category/product-update/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/category/product-update/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/category/product-update/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/category/product-update/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/category/product-update/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/category/product-update/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/category/product-update/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/category/product-update/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/category/product-update/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/ar/category/product-update/index.html"></head><body style="direction: rtl;"><div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en" selected="true">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar">العربية</option></select></div><script id="i18n-script">
+  });
+});
+
+function getLanguageFromURL() {
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const supportedLanguageCodes = docsLanguage.map(lang => lang.value);
+  
+  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
+    return pathParts[0];
+  }
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("lang") || "en";
+}
+  </script><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/category/product-update/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/category/product-update/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/category/product-update/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/category/product-update/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/category/product-update/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/category/product-update/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/category/product-update/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/category/product-update/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/category/product-update/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/category/product-update/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/ar/category/product-update/index.html"></head><body style="direction: rtl;"><div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar" selected="true">العربية</option></select></div><script id="i18n-script">
 const supportedLanguages = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
 
 function changeLanguage(language) {
@@ -128,30 +171,4 @@ function changeLanguage(language) {
 
   window.location.href = url.href;
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll("a[href]");
-  links.forEach(link => {
-    const href = link.getAttribute("href");
-    if (href.startsWith("https://docs.rememberizer.ai/") || href.startsWith("https://docs.skydeck.ai/")) {
-      const url = new URL(href);
-      const language = getLanguageFromURL();
-      const newPath = `/${language}${url.pathname}`;
-      url.pathname = newPath;
-      link.setAttribute("href", url.href);
-    }
-  });
-});
-
-function getLanguageFromURL() {
-  const pathParts = window.location.pathname.split('/').filter(Boolean);
-  const supportedLanguageCodes = supportedLanguages.map(lang => lang.value);
-  
-  if (pathParts.length > 0 && supportedLanguageCodes.includes(pathParts[0])) {
-    return pathParts[0];
-  }
-  
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("lang") || "en";
-}
-</script><div id="languageSelector" class="language-selector"><select id="languageDropdown" onchange="changeLanguage(this.value)"><option value="en">English</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="de">Deutsch</option><option value="zh-cn">简体中文</option><option value="zh-hk">繁體中文</option><option value="pt">Português</option><option value="ar" selected="true">العربية</option></select></div></body></html>
+</script></body></html>
