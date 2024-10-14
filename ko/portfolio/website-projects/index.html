@@ -24,7 +24,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: flex;
       align-items: center;
       width: 110px;
-      gap: 15px;
+      justify-content: space-between;
     }
     .current-language::after {
       content: "";
@@ -32,6 +32,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-right: 5px solid transparent;
       border-top: 5px solid #333;
       margin-left: 8px;
+      transition: transform 0.3s ease;
+      }
+    .current-language.open::after {
+      transform: rotate(180deg);
     }
     .language-dropdown {
       display: none;
@@ -46,6 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin: 0;
       max-height: 200px;
       overflow-y: auto;
+      width: 125px;
     }
     .language-dropdown li {
       padding: 8px 12px;
@@ -57,7 +62,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .language-dropdown li.selected {
       font-weight: bold;
     }
-  </style><script>
+  </style><script id="i18n-script">
+const supportedLanguages = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
+
+window.changeLanguage = function(language) {
+  const url = new URL(window.location);
+  const pathParts = url.pathname.split('/').filter(Boolean);
+
+  if (true) {
+    if (pathParts[0] && supportedLanguages.some(lang => lang.value === pathParts[0])) {
+      pathParts[0] = language;
+    } else {
+      pathParts.unshift(language);
+    }
+    url.pathname = '/' + pathParts.join('/');
+  } else {
+    if (language === "en") {
+      url.searchParams.delete("lang");
+    } else {
+      url.searchParams.set("lang", language);
+    }
+  }
+
+  window.location.href = url.href;
+};
+
+window.toggleLanguageDropdown = function() {
+  const dropdown = document.querySelector('.language-dropdown');
+  if (dropdown) {
+    const isOpen = dropdown.style.display === 'block';
+    dropdown.style.display = isOpen ? 'none' : 'block';
+    currentLanguage.classList.toggle('open', !isOpen);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  const currentLanguageElement = document.querySelector('.current-language');
+  if (currentLanguageElement) {
+    currentLanguageElement.addEventListener('click', window.toggleLanguageDropdown);
+  }
+
+  const dropdownItems = document.querySelectorAll('.language-dropdown li');
+  dropdownItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      const selectedLang = this.getAttribute('data-lang');
+      window.changeLanguage(selectedLang);
+      window.toggleLanguageDropdown();
+    });
+  });
+});
+
+document.addEventListener('click', function(event) {
+  const languageSelector = document.getElementById('languageSelector');
+  if (languageSelector) {
+    const isClickInside = languageSelector.contains(event.target);
+    if (!isClickInside) {
+      const dropdown = document.querySelector('.language-dropdown');
+      if (dropdown) {
+        dropdown.style.display = 'none';
+        currentLanguage.classList.remove('open');
+      }
+    }
+  }
+});
+</script><script>
   const docsLanguage = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
 
   document.addEventListener("DOMContentLoaded", function() {
@@ -90,56 +158,4 @@ function getLanguageFromURL() {
   </script><link rel="alternate" hreflang="en" href="https://thangdp.regionaldelicacyshop.software/en/portfolio/website-projects/index.html"><link rel="alternate" hreflang="fr" href="https://thangdp.regionaldelicacyshop.software/fr/portfolio/website-projects/index.html"><link rel="alternate" hreflang="ja" href="https://thangdp.regionaldelicacyshop.software/ja/portfolio/website-projects/index.html"><link rel="alternate" hreflang="ko" href="https://thangdp.regionaldelicacyshop.software/ko/portfolio/website-projects/index.html"><link rel="alternate" hreflang="es" href="https://thangdp.regionaldelicacyshop.software/es/portfolio/website-projects/index.html"><link rel="alternate" hreflang="de" href="https://thangdp.regionaldelicacyshop.software/de/portfolio/website-projects/index.html"><link rel="alternate" hreflang="zh-cn" href="https://thangdp.regionaldelicacyshop.software/zh-cn/portfolio/website-projects/index.html"><link rel="alternate" hreflang="zh-hk" href="https://thangdp.regionaldelicacyshop.software/zh-hk/portfolio/website-projects/index.html"><link rel="alternate" hreflang="pt" href="https://thangdp.regionaldelicacyshop.software/pt/portfolio/website-projects/index.html"><link rel="alternate" hreflang="ar" href="https://thangdp.regionaldelicacyshop.software/ar/portfolio/website-projects/index.html"><link rel="canonical" href="https://thangdp.regionaldelicacyshop.software/ko/portfolio/website-projects/index.html"></head><body class="body-4" style="direction: ltr;"><div class="sdai-navbar w-nav" data-animation="default" data-collapse="medium" data-doc-height="1" data-duration="400" data-easing="ease" data-easing2="ease" data-no-scroll="1" role="banner"><div class="container-2 w-container"><a class="logo-block w-nav-brand" href="/ko"><img alt="" class="sdai-logo" src="https://thangdp.regionaldelicacyshop.software/assets/1b38df696e.png"></a><nav class="nav-menu w-nav-menu" role="navigation"><a class="nav-link light w-nav-link" href="/ko">홈</a><div class="dropdown w-dropdown" data-delay="0" data-hover="false"><div class="nav-link dropdown-toggle light w-dropdown-toggle"><div class="dropdown-icon w-icon-dropdown-toggle"></div><div class="text-block-15">소개</div></div><nav class="dropdown-list w-dropdown-list"><a class="dropdown-link w-dropdown-link" href="/ko/about/about-skydeckai">소개</a><a class="dropdown-link w-dropdown-link" href="/ko/about/security">보안</a></nav></div><a class="nav-link light w-nav-link" href="/ko/about/skydeck-contact-us">연락처</a><a class="nav-link light w-nav-link" href="/ko/about/blog">블로그</a><a class="nav-link light w-nav-link" href="https://docs.skydeck.ai/" target="_blank">문서</a><div class="div-block-6"><a class="sdai-cta-button sdai-cta-button-on-blue w-button" href="http://admin.skydeck.ai/sign-in" target="_blank">관리자 로그인</a><a class="sdai-cta-button sdai-cta-button-on-blue w-button" href="https://user.skydeck.ai/sign-in" target="_blank">사용자 로그인</a></div></nav><div class="transparant-menu-button w-nav-button"><div class="w-icon-nav-menu"></div></div></div></div><div class="_404-page"><div class="w-layout-blockcontainer container-9 w-container"><div class="div-block-8"><h1 class="heading-12">404 | 이 페이지를 찾을 수 없습니다.</h1><a class="sdai-cta-button w-button" href="/ko">홈페이지로 돌아가기</a></div></div></div><div class="footer"><div class="about-text footer-container w-container"><div class="footer-row block w-row"><div class="footer-column badge w-col w-col-9 w-col-small-small-stack w-col-tiny-tiny-stack"><div class="div-block-4"><a class="social-btn github w-button" href="https://github.com/skydeckai" target="_blank"></a><a class="social-btn x w-button" href="https://x.com/SkyDeckAI" target="_blank"></a><a class="social-btn linkedin w-button" href="https://www.linkedin.com/company/skydeck-ai" target="_blank"></a><a class="social-btn youtube w-button" href="https://www.youtube.com/@SkyDeckAI" target="_blank"></a></div><div class="div-block-3"><a class="footer-link" href="https://docs.skydeck.ai/notices/terms-of-use" target="_blank">이용 약관</a><a class="footer-link" href="https://docs.skydeck.ai/notices/privacy-policy" target="_blank">개인정보처리방침</a><a class="footer-link" href="https://docs.skydeck.ai/notices/cookie-notice" target="_blank">쿠키 공지</a></div><div class="footer-text">© 2024 SkyDeck AI Inc.</div></div><div class="footer-column w-col w-col-3 w-col-small-small-stack w-col-tiny-tiny-stack"><div class="link-block"><a class="w-inline-block" href="https://app.vanta.com/skydeckai/trust/hglgloe5scxyzulfgon9" target="_blank"><img alt="" class="image-10" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/d011dd7a9b.svg"></a><a class="w-inline-block" href="https://appdefensealliance.dev/casa/tier-2/tier2-overview" target="_blank"><img alt="" class="image-11" loading="lazy" src="https://thangdp.regionaldelicacyshop.software/assets/25aff628bf.png"></a></div></div></div></div></div><script src="https://thangdp.regionaldelicacyshop.software/assets/f3a7396718.js" type="text/javascript"></script><script src="https://thangdp.regionaldelicacyshop.software/assets/90b6bbbe1b.js" type="text/javascript"></script><!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-N72P33C2" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div id="languageSelector" class="language-selector"><div class="current-language">한국어</div><ul class="language-dropdown"><li data-lang="en">English</li><li data-lang="fr">Français</li><li data-lang="ja">日本語</li><li data-lang="ko" class="selected">한국어</li><li data-lang="es">Español</li><li data-lang="de">Deutsch</li><li data-lang="zh-cn">简体中文</li><li data-lang="zh-hk">繁體中文</li><li data-lang="pt">Português</li><li data-lang="ar">العربية</li></ul></div><script id="i18n-script">
-const supportedLanguages = [{"value":"en","text":"English"},{"value":"fr","text":"Français"},{"value":"ja","text":"日本語"},{"value":"ko","text":"한국어"},{"value":"es","text":"Español"},{"value":"de","text":"Deutsch"},{"value":"zh-cn","text":"简体中文"},{"value":"zh-hk","text":"繁體中文"},{"value":"pt","text":"Português"},{"value":"ar","text":"العربية"}];
-
-function changeLanguage(language) {
-  const url = new URL(window.location);
-  const pathParts = url.pathname.split('/').filter(Boolean);
-
-  if (true) {
-    if (pathParts[0] && supportedLanguages.some(lang => lang.value === pathParts[0])) {
-      pathParts[0] = language;
-    } else {
-      pathParts.unshift(language);
-    }
-    url.pathname = '/' + pathParts.join('/');
-  } else {
-    if (language === "en") {
-      url.searchParams.delete("lang");
-    } else {
-      url.searchParams.set("lang", language);
-    }
-  }
-
-  window.location.href = url.href;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    function removeWebflowBadge() {
-      var badge = document.querySelector('a.w-webflow-badge');
-      if (badge) {
-        badge.style.display = 'none !important;';
-        observer.disconnect();
-      }
-    }
-
-    removeWebflowBadge();
-
-    var observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.type === 'childList') {
-          mutation.addedNodes.forEach(function(node) {
-            if (node.nodeType === Node.ELEMENT_NODE) {
-              if (node.matches('a.w-webflow-badge') || node.querySelector('a.w-webflow-badge')) {
-                removeWebflowBadge();
-              }
-            }
-          });
-        }
-      });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-  });
-</script></body></html>
+<div id="languageSelector" class="language-selector"><div class="current-language">한국어</div><ul class="language-dropdown"><li data-lang="en">English</li><li data-lang="fr">Français</li><li data-lang="ja">日本語</li><li data-lang="ko" class="selected">한국어</li><li data-lang="es">Español</li><li data-lang="de">Deutsch</li><li data-lang="zh-cn">简体中文</li><li data-lang="zh-hk">繁體中文</li><li data-lang="pt">Português</li><li data-lang="ar">العربية</li></ul></div></body></html>
