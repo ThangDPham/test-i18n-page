@@ -2056,13 +2056,13 @@ textarea.w-input, textarea.w-select {
 :root {
   --untitled-ui--gray400: #98a2b3;
   --untitled-ui--gray700: #344054;
+  --untitled-ui--white: white;
   --royal-blue: #1f6fff;
   --medium-orchid: #1e49f5;
+  --untitled-ui--gray600: #475467;
   --untitled-ui--primary600: #7f56d9;
-  --untitled-ui--white: white;
   --untitled-ui--primary700: #6941c6;
   --untitled-ui--primary100: #f4ebff;
-  --untitled-ui--gray600: #475467;
   --untitled-ui--gray50: #f9fafb;
   --untitled-ui--gray300: #d0d5dd;
   --untitled-ui--gray800: #1d2939;
@@ -3946,7 +3946,7 @@ figcaption {
 }
 
 .large-hero-title-bold {
-  color: #f5653a;
+  color: var(--untitled-ui--white);
   font-weight: 700;
 }
 
@@ -7544,7 +7544,18 @@ figcaption {
   border-width: 0;
   border-color: #fff;
   border-radius: 0;
-  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  margin-bottom: 0;
+  display: flex;
+}
+
+.previous-2 {
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  display: flex;
 }
 
 .container-5 {
@@ -8002,6 +8013,14 @@ figcaption {
   width: 10px;
 }
 
+.icon-4 {
+  margin-bottom: 5px;
+}
+
+.text-block-12 {
+  padding-bottom: 3px;
+}
+
 .paragraph-9 {
   color: #000;
   margin-bottom: 0;
@@ -8009,6 +8028,17 @@ figcaption {
   padding-right: 40px;
   font-size: 16px;
   line-height: 23px;
+}
+
+.pagination-2 {
+  margin-bottom: 50px;
+}
+
+.text-block-13 {
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 3px;
+  display: flex;
 }
 
 .top-menu-bar {
@@ -8828,7 +8858,7 @@ figcaption {
 }
 
 .product-intro-title {
-  color: #f5653a;
+  color: var(--royal-blue);
   margin-top: 100px;
   margin-bottom: 20px;
   font-size: 20px;
@@ -8851,7 +8881,7 @@ figcaption {
 }
 
 .slide-title.phoneview {
-  color: #f5653a;
+  color: var(--royal-blue);
 }
 
 .product-description {
@@ -9347,27 +9377,31 @@ figcaption {
 }
 
 .ctr {
+  background-color: var(--royal-blue);
   color: #fff;
-  background-color: #f5653a;
   border-radius: 3px;
   padding-left: 25px;
   padding-right: 25px;
   font-weight: 600;
+  box-shadow: 10px 8px 8px #0003;
 }
 
 .ctr:hover {
-  color: #ffe2d5;
-  background-color: #f13902;
+  background-color: var(--medium-orchid);
+  color: var(--untitled-ui--white);
 }
 
 .button-3 {
-  background-color: #1f6fff;
+  background-color: var(--untitled-ui--gray400);
+  color: var(--untitled-ui--white);
   border-radius: 3px;
+  font-weight: 600;
 }
 
 .button-3:hover {
-  color: #dbdbff;
-  background-color: #0257f0;
+  background-color: var(--untitled-ui--gray700);
+  color: var(--untitled-ui--white);
+  box-shadow: 8px 8px 8px #0003;
 }
 
 .frame-47712 {
@@ -12030,6 +12064,10 @@ figcaption {
   margin-top: 80px;
 }
 
+.icon-7 {
+  margin-bottom: 3px;
+}
+
 html.w-mod-js [data-ix="hide-block-title"] {
   opacity: 0;
   transform: translate(0, -10px);
@@ -12273,7 +12311,7 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .large-hero-title-bold {
-    color: #f5653a;
+    color: var(--untitled-ui--white);
     font-weight: 700;
   }
 
@@ -12809,7 +12847,7 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .product-intro-title, .slide-title.phoneview {
-    color: #f5653a;
+    color: var(--royal-blue);
   }
 
   .div-block-6 {
@@ -12885,19 +12923,19 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .ctr {
+    background-color: var(--royal-blue);
     color: #fff;
-    background-color: #f5653a;
     font-size: 16px;
   }
 
   .ctr:hover {
-    color: #ffe2d5;
-    background-color: #f13902;
+    background-color: var(--medium-orchid);
+    color: var(--untitled-ui--white);
   }
 
   .button-3:hover {
-    color: #dbdbff;
-    background-color: #0257f0;
+    background-color: var(--untitled-ui--gray700);
+    color: var(--untitled-ui--white);
   }
 
   .text-block-15 {
@@ -13057,6 +13095,10 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   .large-hero-title {
     margin-bottom: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+
+  .large-hero-title-bold {
+    color: var(--royal-blue);
   }
 
   .browser-mockup-right.small {
@@ -13253,9 +13295,9 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .ctr {
+    background-color: var(--royal-blue);
     color: #fff;
     -webkit-text-stroke-color: #fff;
-    background-color: #f5653a;
     border-radius: 3px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 16px;
@@ -13263,13 +13305,13 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .ctr:hover {
-    color: #ffe2d5;
+    background-color: var(--medium-orchid);
+    color: var(--untitled-ui--white);
     -webkit-text-stroke-color: #ffe2d5;
-    background-color: #f13902;
   }
 
   .button-3 {
-    background-color: #1f6fff;
+    background-color: var(--untitled-ui--gray400);
     border-radius: 3px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 16px;
@@ -13277,6 +13319,7 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .button-3:hover {
+    background-color: var(--untitled-ui--gray600);
     color: #dbdbff;
   }
 
@@ -15007,7 +15050,7 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .product-intro-title {
-    color: #f5653a;
+    color: var(--royal-blue);
     margin-top: 60px;
   }
 
@@ -15017,7 +15060,7 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .slide-title.phoneview {
-    color: #f5653a;
+    color: var(--royal-blue);
   }
 
   .slide-nav-2.phoneview {
@@ -15158,22 +15201,23 @@ html.w-mod-js [data-ix="hide-lightbox"] {
   }
 
   .ctr {
-    background-color: #f5653a;
+    background-color: var(--royal-blue);
     border-radius: 3px;
-    font-weight: 400;
+    font-weight: 600;
   }
 
   .ctr:hover {
-    background-color: #f13902;
+    background-color: var(--medium-orchid);
   }
 
   .button-3 {
-    background-color: #1f6fff;
+    background-color: var(--untitled-ui--gray400);
+    font-weight: 600;
   }
 
   .button-3:hover {
+    background-color: var(--untitled-ui--gray700);
     color: #dbdbff;
-    background-color: #0257f0;
   }
 
   .columns-4 {
